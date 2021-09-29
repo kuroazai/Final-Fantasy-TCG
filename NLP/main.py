@@ -34,7 +34,7 @@ if __name__ == "__main__":
         brave = re.findall('Brave', str(results))
         dealit = re.findall('Deal it ([^"]*) damage', str(results))
         controllally = re.findall('If you control ([^"]*),', str(results))
-        gainspwr = re.findall('gains +([^"]*) power,', str(results))
+        gainspwr = re.findall('gains +([^"]*) power', str(results))
         foreachforward = re.findall(
             'For each Forward opponent controls', str(results))
         dealsdamage = re.findall(
@@ -45,7 +45,7 @@ if __name__ == "__main__":
         entersfield = re.findall('When ([^"]*) enters the field', str(results))
         leavesfield = re.findall('When ([^"]*) leaves the field', str(results))
 
-        forwards = re.findall('Choose ([^"]*) Forward', str(results))
+        forwards = re.findall('choose ([^"]*) forward', str(results).lower())
         oppforwards = re.findall(
             'choose up to ([^"]*) Forwards opponent controls', str(results))
         discardactivation = re.findall('discard ([^"]*) card', str(results))
@@ -53,6 +53,25 @@ if __name__ == "__main__":
         breakit = re.findall('Break it', str(results))
         turnlimit = re.findall(
             'You can only use this ability during your turn', str(results))
+
+        if dullforward:
+            intents.append('Dulls Forward')
+        if dealsdamage:
+            intents.append('Deal Damage')
+        if foreachforward:
+            intents.append('For Each Forward')
+        if gainspwr:
+            intents.append('Gains Power')
+        if controllally:
+            intents.append('Control Ally')
+        if dealit:
+            intents.append('Deal it')
+        if brave:
+            intents.append('Brave')
+        if firststrike:
+            intents.append('First Strike')
+        if haste:
+            intents.append('Haste')
         if exburst:
             intents.append('EX Burst')
         if entersfield:
@@ -69,5 +88,6 @@ if __name__ == "__main__":
             intents.append('Break It')
         if turnlimit:
             intents.append(('Player Turn Only'))
+
         print('\n', x[0].strip(),
               '\n', intents)
