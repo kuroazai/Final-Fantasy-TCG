@@ -9,10 +9,9 @@ from nltk.tokenize import sent_tokenize
 import re
 
 example_str = '''
-                EX BURST When The Emperor enters the field, choose up to 2 Forwards opponent controls. Dull them and Freeze them.
-                , discard 1 card: Choose 1 dull Forward. Break it. You can only use this ability during your turn.
-
-            '''
+              If you control [Card Name (Aerith)], Zack gains +2000 power.
+              When Zack enters the field, choose 1 Forward opponent controls. Deal it 2000 damage.
+              '''
 
 if __name__ == "__main__":
     data = sent_tokenize(example_str)
@@ -30,14 +29,30 @@ if __name__ == "__main__":
         intents = []
         results = x[0].strip()
         # classify effects by their classification
+        haste = re.findall('Haste', str(results))
+        firststrike = re.findall('First Strike', str(results))
+        brave = re.findall('Brave', str(results))
+        dealit = re.findall('Deal it ([^"]*) damage', str(results))
+        controllally = re.findall('If you control ([^"]*),', str(results))
+        gainspwr = re.findall('gains +([^"]*) power,', str(results))
+        foreachforward = re.findall(
+            'For each Forward opponent controls', str(results))
+        dealsdamage = re.findall(
+            'When ([^"]*) deals damage to your opponent', str(results))
+        dullforward = re.findall('choose ([^"]*) dull Forward', str(results))
+
         exburst = re.findall('EX BURST', str(results))
         entersfield = re.findall('When ([^"]*) enters the field', str(results))
+        leavesfield = re.findall('When ([^"]*) leaves the field', str(results))
+
         forwards = re.findall('Choose ([^"]*) Forward', str(results))
-        oppforwards = re.findall('choose up to ([^"]*) Forwards opponent controls', str(results))
+        oppforwards = re.findall(
+            'choose up to ([^"]*) Forwards opponent controls', str(results))
         discardactivation = re.findall('discard ([^"]*) card', str(results))
         dullandfreeze = re.findall('Dull them and Freeze them', str(results))
         breakit = re.findall('Break it', str(results))
-        turnlimit = re.findall('You can only use this ability during your turn', str(results))
+        turnlimit = re.findall(
+            'You can only use this ability during your turn', str(results))
         if exburst:
             intents.append('EX Burst')
         if entersfield:
@@ -54,18 +69,5 @@ if __name__ == "__main__":
             intents.append('Break It')
         if turnlimit:
             intents.append(('Player Turn Only'))
-        dullforwards = [x for x in results if 'Choose 1 dull Forward' in x[0]]
-        backups = [x for x in results if 'Choose 1 Backup' in x[0]]
-        exburst = [x for x in results if 'EX BURST' in x[0]]
-        special1 = [x for x in results if 'S1:' in x[0]]
-        special2 = [x for x in results if 'S2:' in x[0]]
-        brave = [x for x in results if 'Brave' in x[0]]
-        entersfield = [x for x in results if 'enters the field' in x[0]]
-        leavesfield = [x for x in results if 'from the the field into Break Zone' in x[0]]
-        search = [x for x in results if 'search' in x[0]]
-        dealit = [x for x in results if 'deal it' in x[0]]
-        itgains = [x for x in results if 'it gains' in x[0]]
-        intobreakzone = [x for x in results if 'into Break Zone' in x[0]]
         print('\n', x[0].strip(),
               '\n', intents)
-
