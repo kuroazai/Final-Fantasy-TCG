@@ -7,7 +7,7 @@
 ![](https://img.shields.io/badge/requests-purple)
 ![](https://img.shields.io/badge/Python-3.9-blue)
 
-## WIP Teaching AI to play TCG games with NLP & OpenAI
+## Teaching AI to play TCG games with NLP & OpenAI
 
 
 ## Introduction
