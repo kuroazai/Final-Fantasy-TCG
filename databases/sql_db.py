@@ -1,14 +1,8 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Sat Sep 18 09:27:01 2021
-
-@author: KuroAzai
-"""
 import mysql.connector
 import glob
 
 
-class MyDatabase:
+class SqlDatabase:
 
     def __init__(self):
         self.conn = mysql.connector.connect(
@@ -26,15 +20,15 @@ class MyDatabase:
         self.cursor.close()
 
     def append_table(self, values):
-        # Check if primary key exists
         stmt = 'SELECT code FROM cards WHERE code = "{}"'.format(values[10])
         self.cursor.execute(stmt)
+
         myresult = self.cursor.fetchall()
-        print(myresult)
+
         if myresult:
             print(values[10], 'Already exists')
             return False
-        # self.cursor.execute(sql, (values), multi=True)
+
         mySql_insert_query = """INSERT INTO Cards (Name, Effect, Type, Element, Cost, Serial, Job, Power, Catagory, Boxset, Code, Image)
                                VALUES {}
                                 """.format(values)
@@ -61,5 +55,7 @@ def create_card_table():
         print('Generated New Table')
 
 
-DB = MyDatabase()
-# DB.retrieve_query()
+if __name__ == '__main__':
+    DB = SqlDatabase()
+    create_card_table()
+    DB.terminate()
