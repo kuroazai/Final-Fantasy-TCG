@@ -1,5 +1,5 @@
 /images
-/__pycache__
+*__pycache__
 /outputs
 /scripts/geckodriver.exe
 /scripts/geckodriver.log
