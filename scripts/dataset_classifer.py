@@ -5,7 +5,7 @@ Created on Tue Sep 28 15:53:23 2021
 @author: KuroAzai
 """
 
-import database
+from databases import database
 import json
 
 

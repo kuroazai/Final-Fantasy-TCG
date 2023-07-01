@@ -1,0 +1,7 @@
+mysql
+nltk
+beautifulsoup4
+requests
+selenium
+openai
+langchain

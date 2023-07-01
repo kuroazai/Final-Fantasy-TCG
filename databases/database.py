@@ -8,7 +8,7 @@ import mysql.connector
 import glob
 
 
-class database:
+class MyDatabase:
 
     def __init__(self):
         self.conn = mysql.connector.connect(
@@ -24,7 +24,6 @@ class database:
 
     def terminate(self):
         self.cursor.close()
-
 
     def append_table(self, values):
         # Check if primary key exists
@@ -52,6 +51,7 @@ class database:
         print(len(myresult))
         return myresult
 
+
 def create_card_table():
     dbloc = r'C:\xampp\mysql\data\fftcg'
     if glob.glob(dbloc + '/cards.*'):
@@ -60,5 +60,6 @@ def create_card_table():
         DB.cursor.execute("CREATE TABLE CARDS (Name VARCHAR(255), Effect VARCHAR(255), Type VARCHAR(255), Element VARCHAR(255), Cost VARCHAR(255), Serial VARCHAR(255), Job VARCHAR(255), Power VARCHAR(255), Catagory VARCHAR(255), Boxset VARCHAR(255), Code VARCHAR(255))")
         print('Generated New Table')
 
-DB = database()
+
+DB = MyDatabase()
 # DB.retrieve_query()
