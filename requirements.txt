@@ -5,3 +5,7 @@ requests
 selenium
 openai
 langchain
+flask
+flask_restful
+pymongo
+redis
