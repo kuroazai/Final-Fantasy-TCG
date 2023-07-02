@@ -1,39 +1,30 @@
 import nltk
 from nltk.tokenize import sent_tokenize
-import re
+import intent_patterns
 
 
-def classify_card_intents(card_description: str):
-    intents = []
-    results = card_description.strip()
+def process_text(input_text) -> dict:
 
-    patterns = {
-        r'Haste': 'Haste',
-        r'First Strike': 'First Strike',
-        r'Brave': 'Brave',
-        r'Deal it ([^"]*) damage': 'Deal Damage',
-        r'If you control ([^"]*),': 'Control Ally',
-        r'gains +([^"]*) power': 'Gains Power',
-        r'For each Forward opponent controls': 'For Each Forward',
-        r'When ([^"]*) deals damage to your opponent': 'Deal it',
-        r'choose ([^"]*) dull Forward': 'Dulls Forward',
-        r'EX BURST': 'EX Burst',
-        r'When ([^"]*) enters the field': 'Enters Field',
-        r'When ([^"]*) leaves the field': None,  # Not specified in the code
-        r'choose ([^"]*) forward': 'Choose Forward',
-        r'choose up to ([^"]*) Forwards opponent controls': 'Target Opponent Forwards',
-        r'discard ([^"]*) card': 'Discard Activation',
-        r'Dull them and Freeze them': 'Dull and Freeze',
-        r'Break it': 'Break It',
-        r'You can only use this ability during your turn': 'Player Turn Only'
+    intents = intent_patterns.classify_card_intents(input_text)
+    response = {
+        'text': input_text,
+        'intent': intents
     }
 
-    for pattern, intent in patterns.items():
-        matches = re.findall(pattern, results)
-        if matches:
-            intents.append(intent)
+    return response
 
-    return intents
+
+def process_card_description(card_desc: str) -> list:
+
+    card_tokens = sent_tokenize(card_desc)
+    data = nltk.pos_tag(card_tokens)
+
+    output = []
+    for sentence in data:
+        if sentence:
+            output.append(process_text(sentence[0].strip()))
+
+    return output
 
 
 if __name__ == "__main__":
@@ -43,18 +34,4 @@ if __name__ == "__main__":
                   When Zack enters the field, choose 1 Forward opponent controls. Deal it 2000 damage.
                   '''
 
-    data = sent_tokenize(example_str)
-    data = nltk.pos_tag(data)
-
-    intents_all = {'Enters Field': [],
-                   'Target Opponent Forwards': [],
-                   'Discard Activation': [],
-                   'Choose Forward': [],
-                   'Dull and Freeze it': [],
-                   'Break It': [],
-                   'EX Burst': [],
-                   'Player Turn Only': []}
-
-    card_intents = classify_card_intents(example_str)
-    print(card_intents)
-    print(data)
+    process_card_description(example_str)
