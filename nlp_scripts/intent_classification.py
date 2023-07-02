@@ -34,4 +34,5 @@ if __name__ == "__main__":
                   When Zack enters the field, choose 1 Forward opponent controls. Deal it 2000 damage.
                   '''
 
-    process_card_description(example_str)
+    resposne = process_card_description(example_str)
+    print(resposne)

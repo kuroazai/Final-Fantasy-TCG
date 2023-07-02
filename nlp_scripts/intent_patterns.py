@@ -17,8 +17,9 @@ def classify_card_intents(card_description: str):
         r'choose ([^"]*) dull Forward': 'Dulls Forward',
         r'EX BURST': 'EX Burst',
         r'When ([^"]*) enters the field': 'Enters Field',
-        r'When ([^"]*) leaves the field': None,  # Not specified in the code
-        r'choose ([^"]*) forward': 'Choose Forward',
+        r'When ([^"]*) leaves the field': 'Leaves Field',
+        r'choose ([^"]*) Forward': 'Choose Forward',
+        r'choose ([^"]*) Backup': 'Choose Forward',
         r'choose up to ([^"]*) Forwards opponent controls': 'Target Opponent Forwards',
         r'discard ([^"]*) card': 'Discard Activation',
         r'Dull them and Freeze them': 'Dull and Freeze',

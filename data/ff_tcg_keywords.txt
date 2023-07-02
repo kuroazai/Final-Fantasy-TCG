@@ -1,0 +1,41 @@
+Keyword Actions
+Some actions are defined with keywords. These are as follows:
+
+Activate - To activate a Character means to turn a dull Character to the active state. It is possible to activate already active Characters.
+
+Dull - To dull a character means to turn an active Character to the dull state. It is possible to dull already dull Characters.
+
+Break - To break a card means to move it from a field to its owner's Break Zone. There are some situations where cards are placed into the Break Zone other than when regular breaking occurs, such as through paying costs, effects that state “put into the Break Zone” or through rules processes but these are not treated as “breaking” unless it is explicitly written that they are.
+
+Discard - To discard a card means to move that card from the player’s hand to their Break Zone.
+
+Remove - To remove a card means to move that card outside of any of the delineated Zones and take it completely out of play.
+
+Shuffle - To shuffle refers to shuffling face down cards in order to randomize their order.
+
+Casting - Casting refers to placing a Summon card, normally from one’s own hand, onto the stack by paying the required cost.
+
+Search - To search means to find specific cards from your deck, reveal them and put them aside. After following the instructions on the searching card, the player then shuffles their deck.
+
+Forming a Party - To form a party means to attack with two or more Forwards as if they were a single Forward. You can only make a party from Forwards sharing the same element. You can only make a party with Forwards that can legally attack. You can make a party with any number of Forwards. If part of a party leaves the field and there is only one Forward left on the field, it is no longer considered as a party.
+
+A Forward can block a party if it can legally block at least one Forward that makes it up, and this results in the whole party being blocked. (e.g. If a Forward with "cannot be blocked by a Forward of cost 3 or more" and another with "cannot be blocked by a Forward of cost 4 or more" make a party, the whole party can be blocked by a Forward that has a cost of 3 or less.) A party can deal First Strike damage only if all Forwards in the party have First Strike. Otherwise, they deal damage normally. If a party is blocked and deals damage to the blocking Forward, each Forward in the party checks it can legally deal damage to that blocking Forward before calculating how much damage is dealt. The damage can then be redirected or prevented. If any of the Forwards in the party deal damage to the blocking Forward and break it, each of the Forwards in the party is considered to have broken the blocking Forward, even if that particular Forward couldn't legally deal damage.
+
+A party disbands when the attacking player returns to the Attack Preparation Step or when the Attack Phase ends.
+
+Groups - Groups are a group of cards that can be created via effects or similar. Groups containing 0 cards may exist under some circumstances. There is a “Split into Groups” effect. This causes the cards in a specified area to be split into groups of a specified number of cards. All cards in the specified area much be part of a group, and when cards are split into groups, there may not be any cards left that do not form part of a group. When splitting into groups, it is possible to make groups with 0 cards inside the group.
+
+Keyword Abilities
+Brave - Brave is a field ability that changes the rules at the attack declaration step. Forward with the Brave trait don’t dull when attacking but can still only attack once per turn.
+
+Haste - Haste is a field ability. Forwards with Haste can attack even if they are not controlled by a player consecutively from the beginning of the turn. Characters with Haste can activate an ability the cost of which includes the dull icon, even if they are not controlled by a player consecutively from the beginning of the game.
+
+First Strike - First strike is a field ability that changes the rules at the damage resolution step. If any of the attacking or blocking Forward have First Strike, these Forwards will deal damage before the other Forwards. Once all First Strike cards have dealt damage, the remaining Forwards then do so. After resolving First Strike damage but before resolving non-First Strike damage, the turn player gains priority. However, players cannot cast Summons or play action or special abilities at this stage. Any abilities triggered by First Strike damage are not put onto the stack until all other damage is resolved. If attacking Forwards form a party, they all have to have the First Strike trait to deal First Strike damage.
+
+Freeze - Freeze is a field ability that changes the rules in the activation phase. Frozen Characters do not activate during their controller's next Activation Phase.
+
+Back Attack - Back Attack is a Character field ability. When a Character with Back Attack is in your hand, you can deploy this Character to your field when you have priority during either player’s Main Phase or Attack Phase. If you have priority, you can use “Back Attack” and deploy the Character to your field as a response to your opponent. As Back Attack doesn’t use the stack, it isn’t possible to prevent the Character from being played.
+
+Damage - Damage is a field ability belonging to a Character. If the controller of the Character with Damage receives the amount of damage specified, the Character gains the ability written next to damage.
+
+Warp - While the stack is empty during your main phase, it is possible to pay the cost written on a card from your hand that has the Warp keyword to remove that card from the game. The card is then removed from the game and has a number of Warp counters placed on it, equal to the Warp value written on the card. At the start of your subsequent main phases 1, any cards that have been removed from the game and that have the Warp keyword and any Warp counters on them will trigger an auto-ability that removes one Warp counter. When the final Warp counter is removed from such a card, an auto ability that deploys the card to the field is triggered.
