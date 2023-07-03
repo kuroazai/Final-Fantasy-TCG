@@ -7,8 +7,7 @@ class RedisConn:
     def __init__(self):
         self.redis = redis.Redis(
             host='192.168.0.6',  # TODO: change this to your host
-            port=6379,
-            password='kaioken')  # TODO: change this to your password
+            port=6379,)
 
     def get(self, key):
         return json.loads(self.redis.get(key))
