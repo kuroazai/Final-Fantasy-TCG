@@ -1,6 +1,6 @@
 import nltk
 from nltk.tokenize import sent_tokenize
-import intent_patterns
+from nlp_scripts import intent_patterns
 
 
 def process_text(input_text) -> dict:
@@ -22,7 +22,10 @@ def process_card_description(card_desc: str) -> list:
     output = []
     for sentence in data:
         if sentence:
-            output.append(process_text(sentence[0].strip()))
+            data = process_text(sentence[0].strip())
+            if data['intent']:
+                output.append(data)
+            # output.append(process_text(sentence[0].strip()))
 
     return output
 

@@ -10,3 +10,5 @@ flask_restful
 pymongo
 redis
 pandas
+keras
+tensorflow
