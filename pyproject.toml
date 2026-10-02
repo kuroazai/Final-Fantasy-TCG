@@ -42,7 +42,7 @@ dev = ["pytest>=8.2", "pytest-cov>=4", "ruff>=0.4", "mypy>=1.8"]
 ffparse = "ffparse.cli:main"
 
 [project.urls]
-Homepage = "https://github.com/kuroazai/Final-Fantasy-TCG"
+Homepage = "https://github.com/kuroazai/ffparse"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/ffparse"]
