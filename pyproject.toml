@@ -1,0 +1,64 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "ffparse"
+version = "1.0.0"
+description = "Parse Final Fantasy TCG rules text into structured, machine-readable effects"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { file = "LICENSE" }
+authors = [{ name = "Fidelis Mwansa" }]
+keywords = ["tcg", "final-fantasy", "nlp", "parser", "rules-engine"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Games/Entertainment",
+    "Topic :: Text Processing :: Linguistic",
+    "Typing :: Typed",
+]
+# Nothing. The previous version imported nltk, openai, langchain, selenium,
+# mysql-connector, redis, pymongo and beautifulsoup4; the part that worked was
+# regex over card text.
+#
+# The nltk use in particular was inert: pos_tag was given sentences instead of
+# words, so every tag came back NNP, and the tags were then discarded. Removing
+# the call produces identical output, and there is a test asserting that.
+dependencies = []
+
+[project.optional-dependencies]
+# Fetching cards from the official API, for the `card` and `coverage` commands
+# when you do not already have a dump.
+fetch = ["requests>=2.28"]
+dev = ["pytest>=8.2", "pytest-cov>=4", "ruff>=0.4", "mypy>=1.8"]
+
+[project.scripts]
+ffparse = "ffparse.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/kuroazai/Final-Fantasy-TCG"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/ffparse"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]
+
+[tool.mypy]
+python_version = "3.10"
+files = ["src/ffparse"]
+ignore_missing_imports = true

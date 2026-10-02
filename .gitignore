@@ -1,6 +1,32 @@
-/images
-*__pycache__
-/outputs
-/scripts/geckodriver.exe
-/scripts/geckodriver.log
-/.idea
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.benchmarks/
+.coverage
+htmlcov/
+
+.env
+*.env
+!.env.example
+
+# Card images are Square Enix's artwork. Not ours to host.
+images/
+outputs/
+
+# WebDriver binaries and their logs. A driver log records local paths, so it
+# does not belong in a repository even when it happens to be empty, which the
+# one previously committed here was.
+geckodriver*
+chromedriver*
+*.log
+
+# Card dumps can be large and are regenerated from the API.
+cards.json
+*.cards.json
